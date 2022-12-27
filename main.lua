@@ -370,7 +370,7 @@ local Page1 = Instance.new("ScrollingFrame")
 local UICorner = Instance.new("UICorner")
 local UICorner3 = Instance.new("UICorner")
 local UIListLayout = Instance.new("UIListLayout")
-local btn = Instance.new("TextButton")
+
 
 local baka = Instance.new("TextButton")
 baka.Name = name
@@ -419,6 +419,7 @@ local butty = {}
 
 function butty:CreateButton(name, callback)
     local callback = callback or function() end
+    local btn = Instance.new("TextButton")
     local UICorner_2 = Instance.new("UICorner")
     btn.Name = name
     btn.Parent = Page1
