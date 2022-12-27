@@ -2,7 +2,7 @@ local lib = {}
 
 
 
-
+--HELLO!
 
 
 
@@ -142,6 +142,14 @@ homebtn.Font = Enum.Font.GothamBold
 homebtn.Text = "Home"
 homebtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 homebtn.TextSize = 14.000
+homebtn.MouseButton1Down:Connect(function()
+    for i,v in pairs(Main.Background:GetChildren()) do
+        if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+            v.Visible = false
+        end
+    end
+    Main:WaitForChild('Background'):WaitForChild('Home').Visible = true
+end)
 
 UICorner_3.Parent = homebtn
 
@@ -360,11 +368,13 @@ function lib:CreateWindow(name)
     
 local Page1 = Instance.new("ScrollingFrame")
 local UICorner = Instance.new("UICorner")
+local UICorner3 = Instance.new("UICorner")
 local UIListLayout = Instance.new("UIListLayout")
 local btn = Instance.new("TextButton")
 
 local baka = Instance.new("TextButton")
 baka.Name = name
+UICorner3.Parent = baka
 baka.Parent = btnholder
 baka.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
 baka.BorderColor3 = Color3.fromRGB(33, 33, 33)
@@ -374,10 +384,19 @@ baka.Font = Enum.Font.GothamBold
 baka.Text = name
 baka.TextColor3 = Color3.fromRGB(255, 255, 255)
 baka.TextSize = 14.000
+baka.MouseButton1Down:Connect(function()
+    for i,v in pairs(Main.Background:GetChildren()) do
+        if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+            v.Visible = false
+        end
+    end
+    Main:WaitForChild('Background'):WaitForChild(name).Visible = true
+
+end)
 
 
-
-
+local UICorner5 = Instance.new("UICorner")
+UICorner5.Parent = Page1
 Page1.Name = name
 Page1.Parent = Background
 Page1.Active = true
@@ -386,6 +405,7 @@ Page1.BorderColor3 = Color3.fromRGB(16, 16, 16)
 Page1.Position = UDim2.new(0.235611513, 0, 0.172804534, 0)
 Page1.Size = UDim2.new(0, 419, 0, 292)
 Page1.ScrollBarThickness = 7
+Page1.Visible = false
 
 UICorner.Parent = Page1
 
