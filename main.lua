@@ -2,7 +2,7 @@ local lib = {}
 
 
 
---HELLO!
+
 
 
 
@@ -417,7 +417,8 @@ UIListLayout.Padding = UDim.new(0, 15)
 
 local butty = {}
 
-function butty:CreateButton(name)
+function butty:CreateButton(name, callback)
+    local callback = callback or function() end
     local UICorner_2 = Instance.new("UICorner")
     btn.Name = name
     btn.Parent = Page1
@@ -430,6 +431,10 @@ function butty:CreateButton(name)
     btn.TextSize = 14.000
 
     UICorner_2.Parent = btn
+
+    btn.MouseButton1Down:Connect(function()
+        pcall(callback)
+    end)
 
 end
 
